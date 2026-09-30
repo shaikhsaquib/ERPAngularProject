@@ -5,13 +5,8 @@ import { AuthService } from '@timescapenu/core-auth';
 @Component({
   standalone: true,
   selector: 'tsn-auth-callback',
-  template: `
-    @if (error()) {
-    <p role="alert">Sign-in failed: {{ error() }}</p>
-    } @else {
-    <p>Signing you in&hellip;</p>
-    }
-  `,
+  templateUrl: './auth-callback.component.html',
+  styleUrl: './auth-callback.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthCallbackComponent {

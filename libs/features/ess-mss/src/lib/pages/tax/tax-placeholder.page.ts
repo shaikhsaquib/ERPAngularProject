@@ -5,7 +5,8 @@ import { EmptyStateComponent } from '@timescapenu/shared-patterns';
   selector: 'tsn-tax-placeholder-page',
   standalone: true,
   imports: [EmptyStateComponent],
-  template: `<tsn-empty-state icon="search" title="Tax" description="Coming soon" />`,
+  templateUrl: './tax-placeholder.page.html',
+  styleUrl: './tax-placeholder.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaxPlaceholderPageComponent {}

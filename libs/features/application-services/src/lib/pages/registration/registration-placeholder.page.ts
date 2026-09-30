@@ -5,7 +5,8 @@ import { EmptyStateComponent } from '@timescapenu/shared-patterns';
   selector: 'tsn-registration-placeholder-page',
   standalone: true,
   imports: [EmptyStateComponent],
-  template: ` <tsn-empty-state title="Registration" description="Coming soon"></tsn-empty-state> `,
+  templateUrl: './registration-placeholder.page.html',
+  styleUrl: './registration-placeholder.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegistrationPlaceholderPageComponent {}

@@ -5,7 +5,8 @@ import { EmptyStateComponent } from '@timescapenu/shared-patterns';
   selector: 'tsn-pf-placeholder-page',
   standalone: true,
   imports: [EmptyStateComponent],
-  template: `<tsn-empty-state icon="search" title="Provident Fund" description="Coming soon" />`,
+  templateUrl: './pf-placeholder.page.html',
+  styleUrl: './pf-placeholder.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PfPlaceholderPageComponent {}

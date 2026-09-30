@@ -5,7 +5,8 @@ import { EmptyStateComponent } from '@timescapenu/shared-patterns';
   selector: 'tsn-travel-placeholder-page',
   standalone: true,
   imports: [EmptyStateComponent],
-  template: ` <tsn-empty-state title="Travel" description="Coming soon"></tsn-empty-state> `,
+  templateUrl: './travel-placeholder.page.html',
+  styleUrl: './travel-placeholder.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TravelPlaceholderPageComponent {}

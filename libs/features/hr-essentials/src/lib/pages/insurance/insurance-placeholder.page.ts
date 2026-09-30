@@ -5,7 +5,8 @@ import { EmptyStateComponent } from '@timescapenu/shared-patterns';
   selector: 'tsn-insurance-placeholder-page',
   standalone: true,
   imports: [EmptyStateComponent],
-  template: ` <tsn-empty-state title="Insurance" description="Coming soon"></tsn-empty-state> `,
+  templateUrl: './insurance-placeholder.page.html',
+  styleUrl: './insurance-placeholder.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InsurancePlaceholderPageComponent {}

@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  padding: var(--tsn-space-6);
+  text-align: center;
+  color: var(--tsn-color-text-secondary);
+}
+
+[role='alert'] {
+  color: var(--tsn-color-danger);
+}

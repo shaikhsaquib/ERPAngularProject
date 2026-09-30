@@ -5,7 +5,8 @@ import { EmptyStateComponent } from '@timescapenu/shared-patterns';
   selector: 'tsn-assets-placeholder-page',
   standalone: true,
   imports: [EmptyStateComponent],
-  template: `<tsn-empty-state icon="search" title="Assets" description="Coming soon" />`,
+  templateUrl: './assets-placeholder.page.html',
+  styleUrl: './assets-placeholder.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AssetsPlaceholderPageComponent {}

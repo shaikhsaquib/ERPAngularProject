@@ -5,9 +5,8 @@ import { EmptyStateComponent } from '@timescapenu/shared-patterns';
   selector: 'tsn-par-placeholder-page',
   standalone: true,
   imports: [EmptyStateComponent],
-  template: `
-    <tsn-empty-state title="Personnel Action Requests" description="Coming soon"></tsn-empty-state>
-  `,
+  templateUrl: './par-placeholder.page.html',
+  styleUrl: './par-placeholder.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ParPlaceholderPageComponent {}
