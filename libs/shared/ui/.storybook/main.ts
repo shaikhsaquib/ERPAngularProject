@@ -13,6 +13,13 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
   },
+  // Serves the design tokens as a real static file instead of a webpack
+  // module import: the Angular builder's CSS loader is scoped to this
+  // project's own source tree, so a cross-project import of
+  // libs/shared/tokens' stylesheet falls through with no loader matched.
+  // preview-head.html links to it as a plain <link>, which needs no
+  // loader at all. See preview-head.html.
+  staticDirs: [{ from: '../../tokens/src/lib', to: '/tokens' }],
 };
 
 export default config;
