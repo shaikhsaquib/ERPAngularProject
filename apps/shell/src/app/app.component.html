@@ -1,1 +1,89 @@
-<router-outlet />
+<div class="tsn-shell">
+  <div class="tsn-shell__topbar">
+    <button
+      type="button"
+      class="tsn-shell__menu-trigger"
+      aria-label="Toggle module menu"
+      (click)="megaMenuOpen.set(!megaMenuOpen())"
+    >
+      ☰
+    </button>
+
+    <tsn-module-bar
+      class="tsn-shell__module-bar"
+      [modules]="modules"
+      [activeModuleId]="activeModuleId()"
+      (moduleSelected)="onModuleSelected($event)"
+      (notificationsClicked)="notificationsOpen.set(!notificationsOpen())"
+      (userMenuClicked)="userMenuOpen.set(!userMenuOpen())"
+    ></tsn-module-bar>
+
+    @if (notificationsOpen()) {
+    <div class="tsn-shell__popover tsn-shell__popover--notifications">
+      @if (notificationsStore.items().length === 0) {
+      <p>No notifications.</p>
+      } @else { @for (notification of notificationsStore.items(); track notification.id) {
+      <button
+        type="button"
+        class="tsn-shell__notification"
+        [class.tsn-shell__notification--unread]="!notification.read"
+        (click)="onNotificationClicked(notification.id)"
+      >
+        <strong>{{ notification.title }}</strong>
+        <span>{{ notification.message }}</span>
+      </button>
+      } }
+    </div>
+    } @if (userMenuOpen()) {
+    <div class="tsn-shell__popover tsn-shell__popover--user">
+      <p>{{ sessionStore.displayName() ?? 'Signed in' }}</p>
+      <tsn-button variant="tertiary" size="sm" (click)="onSignOut()">Sign out</tsn-button>
+    </div>
+    }
+  </div>
+
+  <tsn-mega-menu
+    [sections]="megaMenuSections()"
+    [open]="megaMenuOpen()"
+    (linkSelected)="onMegaMenuLinkSelected($event)"
+    (closed)="megaMenuOpen.set(false)"
+  ></tsn-mega-menu>
+
+  <tsn-breadcrumbs
+    class="tsn-shell__breadcrumbs"
+    [crumbs]="breadcrumbs()"
+    (crumbSelected)="onBreadcrumbSelected($event)"
+  ></tsn-breadcrumbs>
+
+  <div class="tsn-shell__body">
+    <tsn-sidebar
+      class="tsn-shell__sidebar"
+      [items]="sidebarItems()"
+      [collapsed]="sidebarCollapsed()"
+      (itemSelected)="onSidebarItemSelected($event)"
+      (collapsedChange)="sidebarCollapsed.set($event)"
+    ></tsn-sidebar>
+
+    <main class="tsn-shell__content">
+      <router-outlet />
+    </main>
+  </div>
+
+  <button
+    type="button"
+    class="tsn-shell__copilot-trigger"
+    aria-label="Open Copilot"
+    (click)="copilotContext.toggle()"
+  >
+    Copilot
+  </button>
+
+  <tsn-copilot-panel />
+
+  <tsn-command-palette
+    [open]="commandPaletteOpen()"
+    [commands]="commands"
+    (commandSelected)="onCommandSelected($event)"
+    (closed)="commandPaletteOpen.set(false)"
+  ></tsn-command-palette>
+</div>

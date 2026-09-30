@@ -1,4 +1,4 @@
-import type { ShellEnvironment } from './environment';
+import type { ShellEnvironment } from './shell-environment.interface';
 
 /** TODO(platform-team): replace with the real per-environment IdP/API values at deploy time. */
 export const environment: ShellEnvironment = {

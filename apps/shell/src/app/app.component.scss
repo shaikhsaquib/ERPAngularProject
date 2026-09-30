@@ -2,3 +2,114 @@
   display: block;
   min-height: 100vh;
 }
+
+.tsn-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.tsn-shell__topbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--tsn-space-2);
+  border-bottom: 1px solid var(--tsn-color-border);
+  background: var(--tsn-color-surface);
+}
+
+.tsn-shell__menu-trigger {
+  border: none;
+  background: transparent;
+  font-size: var(--tsn-font-size-lg);
+  padding: var(--tsn-space-2) var(--tsn-space-3);
+  cursor: pointer;
+  color: var(--tsn-color-text-secondary);
+
+  &:hover {
+    color: var(--tsn-color-text-primary);
+  }
+}
+
+.tsn-shell__module-bar {
+  flex: 1;
+}
+
+.tsn-shell__popover {
+  position: absolute;
+  top: 100%;
+  right: var(--tsn-space-4);
+  z-index: 20;
+  min-width: 16rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsn-space-2);
+  padding: var(--tsn-space-3);
+  background: var(--tsn-color-surface-raised, var(--tsn-color-surface));
+  border: 1px solid var(--tsn-color-border);
+  border-radius: var(--tsn-radius-md);
+  box-shadow: var(--tsn-elevation-3);
+}
+
+.tsn-shell__notification {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsn-space-1);
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: var(--tsn-space-2);
+  border-radius: var(--tsn-radius-sm);
+  cursor: pointer;
+  font: inherit;
+  color: var(--tsn-color-text-primary);
+
+  &:hover {
+    background: var(--tsn-color-surface-sunken);
+  }
+
+  &--unread strong::before {
+    content: '● ';
+    color: var(--tsn-color-info);
+  }
+}
+
+.tsn-shell__breadcrumbs {
+  padding: var(--tsn-space-2) var(--tsn-space-4);
+  border-bottom: 1px solid var(--tsn-color-border);
+}
+
+.tsn-shell__body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.tsn-shell__sidebar {
+  flex-shrink: 0;
+}
+
+.tsn-shell__content {
+  flex: 1;
+  min-width: 0;
+  padding: var(--tsn-space-6);
+}
+
+.tsn-shell__copilot-trigger {
+  position: fixed;
+  right: var(--tsn-space-6);
+  bottom: var(--tsn-space-6);
+  z-index: 30;
+  padding: var(--tsn-space-3) var(--tsn-space-5);
+  border-radius: var(--tsn-radius-full);
+  border: none;
+  background: var(--tsn-color-primary);
+  color: var(--tsn-color-on-primary);
+  font-weight: var(--tsn-font-weight-semibold);
+  box-shadow: var(--tsn-elevation-3);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--tsn-color-primary-hover);
+  }
+}

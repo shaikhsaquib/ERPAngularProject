@@ -1,12 +1,4 @@
-import type { LocaleConfig } from '@timescapenu/shared-models';
-import type { AuthConfig } from '@timescapenu/core-auth';
-
-export interface ShellEnvironment {
-  production: boolean;
-  apiBaseUrl: string;
-  auth: AuthConfig;
-  locale: LocaleConfig;
-}
+import type { ShellEnvironment } from './shell-environment.interface';
 
 /** Local development defaults. `environment.prod.ts` replaces this file in production builds (see project.json). */
 export const environment: ShellEnvironment = {
