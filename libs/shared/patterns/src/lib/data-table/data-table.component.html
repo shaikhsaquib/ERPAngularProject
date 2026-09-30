@@ -1,0 +1,78 @@
+<div class="tsn-data-table">
+  <ng-container *ngIf="rows.length > 0 || loading; else emptyState">
+    <div class="tsn-data-table__container">
+      <div class="tsn-data-table__header" [style.grid-template-columns]="gridTemplateColumns">
+        <button
+          *ngFor="let column of columns; trackBy: trackColumn"
+          type="button"
+          class="tsn-data-table__header-cell"
+          [class.tsn-data-table__header-cell--sortable]="column.sortable"
+          [disabled]="!column.sortable"
+          (click)="onHeaderClick(column)"
+        >
+          <span class="tsn-data-table__header-label">{{ column.header }}</span>
+          <span class="tsn-data-table__sort-indicator" *ngIf="column.sortable">
+            <ng-container [ngSwitch]="directionFor(column.field)">
+              <span *ngSwitchCase="'asc'" aria-hidden="true">&#9650;</span>
+              <span *ngSwitchCase="'desc'" aria-hidden="true">&#9660;</span>
+            </ng-container>
+          </span>
+        </button>
+      </div>
+
+      <cdk-virtual-scroll-viewport [itemSize]="rowItemSize" class="tsn-data-table__viewport">
+        <div *cdkVirtualFor="let row of rows; trackBy: trackRow" class="tsn-data-table__row-slot">
+          <ng-container *hasPermission="capabilitiesFor(row)">
+            <div
+              class="tsn-data-table__row"
+              [style.grid-template-columns]="gridTemplateColumns"
+              (click)="rowClick.emit(row)"
+            >
+              <div
+                *ngFor="let column of columns; trackBy: trackColumn"
+                class="tsn-data-table__cell"
+              >
+                {{ cellValue(row, column) }}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </cdk-virtual-scroll-viewport>
+
+      <div class="tsn-data-table__loading-overlay" *ngIf="loading">
+        <div class="tsn-data-table__spinner" aria-hidden="true"></div>
+        <span>Loading&hellip;</span>
+      </div>
+    </div>
+
+    <div class="tsn-data-table__pager">
+      <button
+        type="button"
+        class="tsn-data-table__pager-button"
+        [disabled]="!hasPreviousPage"
+        (click)="goToPreviousPage()"
+      >
+        Previous
+      </button>
+      <span class="tsn-data-table__pager-status">
+        Page {{ page }} of {{ totalPages }} &middot; {{ totalCount }} total
+      </span>
+      <button
+        type="button"
+        class="tsn-data-table__pager-button"
+        [disabled]="!hasNextPage"
+        (click)="goToNextPage()"
+      >
+        Next
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyState>
+    <tsn-empty-state
+      icon="search"
+      title="No records found"
+      description="Try adjusting your filters or search criteria."
+    ></tsn-empty-state>
+  </ng-template>
+</div>

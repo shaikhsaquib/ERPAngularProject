@@ -1,0 +1,26 @@
+<ol class="tsn-stepper">
+  <li
+    *ngFor="let step of steps; let i = index; let isLast = last; trackBy: trackByIndex"
+    class="tsn-stepper__step"
+    [class.tsn-stepper__step--complete]="step.state === 'complete'"
+    [class.tsn-stepper__step--active]="step.state === 'active'"
+    [class.tsn-stepper__step--upcoming]="step.state === 'upcoming'"
+    [class.tsn-stepper__step--error]="step.state === 'error'"
+  >
+    <div class="tsn-stepper__connector-row">
+      <button
+        type="button"
+        class="tsn-stepper__marker"
+        [disabled]="step.state !== 'complete'"
+        [attr.aria-current]="step.state === 'active' ? 'step' : null"
+        (click)="onStepClick(i, step)"
+      >
+        <span *ngIf="step.state === 'complete'" aria-hidden="true">&#10003;</span>
+        <span *ngIf="step.state === 'error'" aria-hidden="true">!</span>
+        <span *ngIf="step.state !== 'complete' && step.state !== 'error'">{{ i + 1 }}</span>
+      </button>
+      <span *ngIf="!isLast" class="tsn-stepper__connector" aria-hidden="true"></span>
+    </div>
+    <span class="tsn-stepper__label">{{ step.label }}</span>
+  </li>
+</ol>

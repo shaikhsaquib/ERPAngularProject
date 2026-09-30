@@ -1,0 +1,44 @@
+.tsn-dynamic-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsn-space-4);
+  font-family: var(--tsn-font-family-base);
+}
+
+.tsn-dynamic-form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.tsn-dynamic-form__native-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsn-space-1);
+}
+
+.tsn-dynamic-form__native-label {
+  color: var(--tsn-color-text-secondary);
+  font-size: var(--tsn-font-size-sm);
+  font-weight: var(--tsn-font-weight-medium);
+}
+
+.tsn-dynamic-form__native-input,
+.tsn-dynamic-form__native-select {
+  padding: var(--tsn-space-2) var(--tsn-space-3);
+  border: 1px solid var(--tsn-color-border);
+  border-radius: var(--tsn-radius-sm);
+  background: var(--tsn-color-surface);
+  color: var(--tsn-color-text-primary);
+  font: inherit;
+  font-size: var(--tsn-font-size-base);
+
+  &:focus-visible {
+    outline: 2px solid var(--tsn-color-focus-ring);
+    outline-offset: 1px;
+  }
+}
+
+.tsn-dynamic-form__actions {
+  display: flex;
+  justify-content: flex-end;
+}

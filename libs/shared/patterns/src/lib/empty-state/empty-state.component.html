@@ -1,0 +1,8 @@
+<div class="tsn-empty-state">
+  <tsn-icon *ngIf="icon" [name]="icon" size="lg" class="tsn-empty-state__icon"></tsn-icon>
+  <h3 class="tsn-empty-state__title">{{ title }}</h3>
+  <p *ngIf="description" class="tsn-empty-state__description">{{ description }}</p>
+  <div class="tsn-empty-state__actions">
+    <ng-content select="[tsnEmptyStateActions]"></ng-content>
+  </div>
+</div>

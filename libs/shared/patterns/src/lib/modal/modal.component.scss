@@ -1,0 +1,60 @@
+.tsn-modal {
+  width: 90vw;
+  padding: 0;
+  border: none;
+  border-radius: var(--tsn-radius-lg);
+  background: var(--tsn-color-surface);
+  color: var(--tsn-color-text-primary);
+  box-shadow: var(--tsn-elevation-4);
+
+  &::backdrop {
+    background: var(--tsn-color-surface-overlay);
+  }
+
+  &--sm {
+    max-width: 24rem;
+  }
+
+  &--md {
+    max-width: 32rem;
+  }
+
+  &--lg {
+    max-width: 48rem;
+  }
+}
+
+.tsn-modal__panel {
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+}
+
+.tsn-modal__header {
+  padding: var(--tsn-space-4) var(--tsn-space-6);
+  border-bottom: 1px solid var(--tsn-color-border);
+  font-size: var(--tsn-font-size-lg);
+  font-weight: var(--tsn-font-weight-semibold);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.tsn-modal__body {
+  flex: 1;
+  padding: var(--tsn-space-6);
+  overflow-y: auto;
+}
+
+.tsn-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--tsn-space-3);
+  padding: var(--tsn-space-4) var(--tsn-space-6);
+  border-top: 1px solid var(--tsn-color-border);
+
+  &:empty {
+    display: none;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="tsn-workflow-valid-actions">
+  <ng-container *ngFor="let action of actions; trackBy: trackByAction">
+    <ng-container *ngIf="capabilityFor(action) as capability; else plainAction">
+      <ng-container *hasPermission="capability">
+        <ng-container *ngTemplateOutlet="actionTpl; context: { $implicit: action }"></ng-container>
+      </ng-container>
+    </ng-container>
+    <ng-template #plainAction>
+      <ng-container *ngTemplateOutlet="actionTpl; context: { $implicit: action }"></ng-container>
+    </ng-template>
+  </ng-container>
+</div>
+
+<ng-template #actionTpl let-action>
+  <tsn-button
+    type="button"
+    size="sm"
+    [variant]="variantFor(action)"
+    (click)="actionSelected.emit(action)"
+  >
+    {{ labelFor(action) }}
+  </tsn-button>
+</ng-template>

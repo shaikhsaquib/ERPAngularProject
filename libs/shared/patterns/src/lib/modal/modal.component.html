@@ -1,0 +1,21 @@
+<dialog
+  #dialogEl
+  class="tsn-modal"
+  [class.tsn-modal--sm]="size === 'sm'"
+  [class.tsn-modal--md]="size === 'md'"
+  [class.tsn-modal--lg]="size === 'lg'"
+  (close)="onDialogClose()"
+  (click)="onDialogClick($event)"
+>
+  <div class="tsn-modal__panel">
+    <header class="tsn-modal__header">
+      <ng-content select="[tsnModalHeader]"></ng-content>
+    </header>
+    <div class="tsn-modal__body">
+      <ng-content></ng-content>
+    </div>
+    <footer class="tsn-modal__footer">
+      <ng-content select="[tsnModalFooter]"></ng-content>
+    </footer>
+  </div>
+</dialog>
