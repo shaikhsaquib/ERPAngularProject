@@ -1,0 +1,91 @@
+.tsn-module-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tsn-space-4);
+  height: var(--tsn-space-12);
+  padding: 0 var(--tsn-space-4);
+  background: var(--tsn-color-surface);
+  border-bottom: 1px solid var(--tsn-color-border);
+
+  &__modules {
+    display: flex;
+    align-items: center;
+    gap: var(--tsn-space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__module {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--tsn-color-text-secondary);
+    font-size: var(--tsn-font-size-sm);
+    font-weight: var(--tsn-font-weight-medium);
+    padding: var(--tsn-space-2) var(--tsn-space-3);
+    border-radius: var(--tsn-radius-md);
+    cursor: pointer;
+    transition: background-color var(--tsn-motion-duration-fast) var(--tsn-motion-easing-standard);
+
+    &:hover {
+      background: var(--tsn-color-surface-sunken);
+      color: var(--tsn-color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tsn-color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    &--active {
+      color: var(--tsn-color-primary);
+      background: var(--tsn-color-surface-sunken);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--tsn-space-2);
+  }
+
+  &__action {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--tsn-space-2);
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--tsn-color-text-secondary);
+    padding: var(--tsn-space-2);
+    border-radius: var(--tsn-radius-md);
+    cursor: pointer;
+    transition: background-color var(--tsn-motion-duration-fast) var(--tsn-motion-easing-standard);
+
+    &:hover {
+      background: var(--tsn-color-surface-sunken);
+      color: var(--tsn-color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tsn-color-focus-ring);
+      outline-offset: 2px;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(35%, -35%);
+  }
+
+  &__user-name {
+    font-size: var(--tsn-font-size-sm);
+    font-weight: var(--tsn-font-weight-medium);
+    color: var(--tsn-color-text-primary);
+  }
+}

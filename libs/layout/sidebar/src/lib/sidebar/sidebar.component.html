@@ -1,0 +1,40 @@
+<nav class="tsn-sidebar" [class.tsn-sidebar--collapsed]="collapsed" aria-label="Section navigation">
+  <button
+    type="button"
+    class="tsn-sidebar__toggle"
+    [attr.aria-label]="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+    (click)="onToggleCollapsed()"
+  >
+    <tsn-icon [name]="collapsed ? 'chevron-right' : 'chevron-down'" size="sm"></tsn-icon>
+  </button>
+
+  <ul class="tsn-sidebar__list">
+    <li class="tsn-sidebar__item-wrapper" *ngFor="let item of items">
+      <button
+        type="button"
+        class="tsn-sidebar__item"
+        [class.tsn-sidebar__item--expanded]="hasChildren(item) && isExpanded(item)"
+        [attr.aria-expanded]="hasChildren(item) ? isExpanded(item) : null"
+        (click)="onItemClick(item)"
+      >
+        <tsn-icon *ngIf="item.icon" [name]="item.icon" size="sm"></tsn-icon>
+        <span class="tsn-sidebar__label">{{ item.label }}</span>
+        <tsn-icon
+          *ngIf="hasChildren(item)"
+          class="tsn-sidebar__chevron"
+          [name]="isExpanded(item) ? 'chevron-down' : 'chevron-right'"
+          size="sm"
+        ></tsn-icon>
+      </button>
+
+      <ul class="tsn-sidebar__children" *ngIf="hasChildren(item) && isExpanded(item)">
+        <li *ngFor="let child of item.children">
+          <button type="button" class="tsn-sidebar__child" (click)="onChildClick(child)">
+            <tsn-icon *ngIf="child.icon" [name]="child.icon" size="sm"></tsn-icon>
+            <span>{{ child.label }}</span>
+          </button>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,28 @@
+<ng-container *hasPermission="viewCapability; else accessRestricted">
+  <section class="attendance-list">
+    <header class="attendance-list__header">
+      <h1>Attendance</h1>
+    </header>
+
+    <tsn-data-table
+      [columns]="columns"
+      [rows]="rows()"
+      [totalCount]="totalCount()"
+      [page]="page()"
+      [pageSize]="pageSize()"
+      [sort]="sort()"
+      [loading]="loading()"
+      trackByField="id"
+      (pageChange)="onPageChange($event)"
+      (sortChange)="onSortChange($event)"
+    ></tsn-data-table>
+  </section>
+</ng-container>
+
+<ng-template #accessRestricted>
+  <tsn-empty-state
+    icon="warning"
+    title="Access restricted"
+    description="You do not have permission to view attendance records."
+  ></tsn-empty-state>
+</ng-template>

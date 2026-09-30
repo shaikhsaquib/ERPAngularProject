@@ -1,0 +1,22 @@
+// Global stylesheet — loads the design tokens exactly once so every
+// component's `var(--tsn-*)` references resolve. Nothing else belongs here;
+// component-level styling stays in each component's own .scss file.
+@use '../../../libs/shared/tokens/src/lib/tokens';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--tsn-font-family-base);
+  font-size: var(--tsn-font-size-base);
+  line-height: var(--tsn-line-height-base);
+  color: var(--tsn-color-text-primary);
+  background: var(--tsn-color-surface-sunken);
+}

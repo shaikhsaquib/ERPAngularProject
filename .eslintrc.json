@@ -1,0 +1,115 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nx"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "scope:shell",
+                "onlyDependOnLibsWithTags": [
+                  "scope:core",
+                  "scope:shared",
+                  "scope:layout",
+                  "scope:copilot",
+                  "scope:feature-home",
+                  "scope:feature-application-services",
+                  "scope:feature-compliance",
+                  "scope:feature-hr-essentials",
+                  "scope:feature-ess-mss",
+                  "scope:feature-corporate-lounge",
+                  "scope:feature-company-specific",
+                  "scope:feature-my-sap"
+                ]
+              },
+              {
+                "sourceTag": "scope:core",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:core"]
+              },
+              {
+                "sourceTag": "scope:layout",
+                "onlyDependOnLibsWithTags": ["scope:layout", "scope:core", "scope:shared"]
+              },
+              {
+                "sourceTag": "scope:copilot",
+                "onlyDependOnLibsWithTags": ["scope:copilot", "scope:core", "scope:shared"]
+              },
+              {
+                "sourceTag": "scope:feature-home",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared", "scope:layout"]
+              },
+              {
+                "sourceTag": "scope:feature-application-services",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared", "scope:layout"]
+              },
+              {
+                "sourceTag": "scope:feature-compliance",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared", "scope:layout"]
+              },
+              {
+                "sourceTag": "scope:feature-hr-essentials",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared", "scope:layout"]
+              },
+              {
+                "sourceTag": "scope:feature-ess-mss",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared", "scope:layout"]
+              },
+              {
+                "sourceTag": "scope:feature-corporate-lounge",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared", "scope:layout"]
+              },
+              {
+                "sourceTag": "scope:feature-company-specific",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared", "scope:layout"]
+              },
+              {
+                "sourceTag": "scope:feature-my-sap",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:shared", "scope:layout"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "error"
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      },
+      "rules": {}
+    },
+    {
+      // Storybook preview configs load the design tokens partial once as a
+      // global stylesheet, which is a legitimate cross-lib reach (build/dev
+      // infra, not application source) that @nx/enforce-module-boundaries
+      // isn't meant to police.
+      "files": ["**/.storybook/**/*.ts"],
+      "rules": {
+        "@nx/enforce-module-boundaries": "off"
+      }
+    }
+  ]
+}

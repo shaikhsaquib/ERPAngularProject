@@ -1,0 +1,34 @@
+<ng-container *hasPermission="'my-sap.workspace.view'; else restricted">
+  <tsn-data-table
+    [columns]="columns"
+    [rows]="rows()"
+    [totalCount]="totalCount()"
+    [page]="page()"
+    [pageSize]="pageSize()"
+    [sort]="sort()"
+    [loading]="loading()"
+    trackByField="id"
+    (pageChange)="onPageChange($event)"
+    (sortChange)="onSortChange($event)"
+  ></tsn-data-table>
+
+  @if (rows().length > 0) {
+  <ul class="sap-launch-list">
+    @for (link of rows(); track link.id) {
+    <li *hasPermission="'my-sap.workspace.launch'" class="sap-launch-list__item">
+      <tsn-button variant="tertiary" size="sm" (click)="openInSap(link)">
+        Open {{ link.name }} in SAP
+      </tsn-button>
+    </li>
+    }
+  </ul>
+  }
+</ng-container>
+
+<ng-template #restricted>
+  <tsn-empty-state
+    icon="warning"
+    title="Access restricted"
+    description="You don't have permission to view SAP workspaces."
+  />
+</ng-template>

@@ -1,0 +1,50 @@
+<aside class="tsn-copilot-panel" *ngIf="store.panelOpen()" aria-label="Copilot">
+  <header class="tsn-copilot-panel__header">
+    <div class="tsn-copilot-panel__heading">
+      <h2 class="tsn-copilot-panel__title">Copilot</h2>
+      <p class="tsn-copilot-panel__context" *ngIf="store.contextSummary() as summary">
+        {{ summary }}
+      </p>
+    </div>
+    <button
+      type="button"
+      class="tsn-copilot-panel__close"
+      aria-label="Close Copilot"
+      (click)="onClose()"
+    >
+      <tsn-icon name="close" size="sm"></tsn-icon>
+    </button>
+  </header>
+
+  <div class="tsn-copilot-panel__messages">
+    <p class="tsn-copilot-panel__empty" *ngIf="messages().length === 0">
+      Ask Copilot about {{ store.activeModule() ?? 'this module' }}, or pick a suggestion below.
+    </p>
+    <div
+      class="tsn-copilot-panel__message"
+      *ngFor="let message of messages()"
+      [class.tsn-copilot-panel__message--user]="message.role === 'user'"
+      [class.tsn-copilot-panel__message--assistant]="message.role === 'assistant'"
+    >
+      {{ message.text }}
+    </div>
+  </div>
+
+  <tsn-suggestion-chips
+    class="tsn-copilot-panel__chips"
+    [chips]="store.suggestions()"
+    (chipSelected)="onSuggestionSelected($event)"
+  ></tsn-suggestion-chips>
+
+  <form class="tsn-copilot-panel__composer" (submit)="onSend($event)">
+    <tsn-input
+      class="tsn-copilot-panel__input"
+      label="Message Copilot"
+      placeholder="Ask Copilot…"
+      [formControl]="messageControl"
+    ></tsn-input>
+    <tsn-button type="submit" variant="primary" size="sm" [disabled]="!messageValue().trim()">
+      Send
+    </tsn-button>
+  </form>
+</aside>

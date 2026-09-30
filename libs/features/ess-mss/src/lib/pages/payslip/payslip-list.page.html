@@ -1,0 +1,22 @@
+<ng-container *hasPermission="'ess-mss.payslip.view'; else restricted">
+  <tsn-data-table
+    [columns]="columns"
+    [rows]="rows()"
+    [totalCount]="totalCount()"
+    [page]="page()"
+    [pageSize]="pageSize()"
+    [sort]="sort()"
+    [loading]="loading()"
+    trackByField="id"
+    (pageChange)="onPageChange($event)"
+    (sortChange)="onSortChange($event)"
+  ></tsn-data-table>
+</ng-container>
+
+<ng-template #restricted>
+  <tsn-empty-state
+    icon="warning"
+    title="Access restricted"
+    description="You don't have permission to view payslips."
+  />
+</ng-template>

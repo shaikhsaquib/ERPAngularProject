@@ -1,0 +1,44 @@
+.home-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsn-space-6);
+  padding: var(--tsn-space-6);
+
+  &__banner h1 {
+    margin: 0;
+    font-size: var(--tsn-font-size-xl);
+    font-weight: var(--tsn-font-weight-semibold);
+    color: var(--tsn-color-text-primary);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: var(--tsn-space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__card-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--tsn-space-6) var(--tsn-space-4);
+    border: 1px solid var(--tsn-color-border);
+    border-radius: var(--tsn-radius-md);
+    background: var(--tsn-color-surface-raised);
+    text-decoration: none;
+    transition: box-shadow var(--tsn-motion-duration-base) var(--tsn-motion-easing-standard);
+
+    &:hover,
+    &:focus-visible {
+      box-shadow: var(--tsn-elevation-2);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tsn-color-focus-ring);
+      outline-offset: 2px;
+    }
+  }
+}

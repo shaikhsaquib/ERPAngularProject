@@ -1,0 +1,39 @@
+<ng-container *hasPermission="viewCapability; else accessRestricted">
+  <section class="gatepass-list">
+    <header class="gatepass-list__header">
+      <h1>Gatepasses</h1>
+      <tsn-button *hasPermission="createCapability" variant="primary">New Gatepass</tsn-button>
+    </header>
+
+    <tsn-data-table
+      [columns]="columns"
+      [rows]="rows()"
+      [totalCount]="totalCount()"
+      [page]="page()"
+      [pageSize]="pageSize()"
+      [sort]="sort()"
+      [loading]="loading()"
+      trackByField="id"
+      (pageChange)="onPageChange($event)"
+      (sortChange)="onSortChange($event)"
+      (rowClick)="onRowClick($event)"
+    ></tsn-data-table>
+
+    <section class="gatepass-list__detail" *ngIf="selectedGatepass() as gatepass">
+      <h2>{{ gatepass.visitorName }}</h2>
+      <tsn-workflow-status-badge [state]="gatepass.status" />
+      <tsn-workflow-valid-actions
+        [state]="gatepass.status"
+        (actionSelected)="onWorkflowAction($event)"
+      />
+    </section>
+  </section>
+</ng-container>
+
+<ng-template #accessRestricted>
+  <tsn-empty-state
+    icon="warning"
+    title="Access restricted"
+    description="You do not have permission to view gatepasses."
+  ></tsn-empty-state>
+</ng-template>

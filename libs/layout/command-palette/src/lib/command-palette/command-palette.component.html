@@ -1,0 +1,36 @@
+<tsn-modal [open]="open" size="sm" (closed)="onClosed()">
+  <div tsnModalHeader>Command palette</div>
+
+  <div class="tsn-command-palette__body">
+    <tsn-input
+      class="tsn-command-palette__search"
+      label="Search commands"
+      [formControl]="searchControl"
+      placeholder="Search commands…"
+    ></tsn-input>
+
+    <tsn-empty-state
+      *ngIf="flatCommands().length === 0"
+      icon="search"
+      title="No matching commands"
+      description="Try a different search term."
+    ></tsn-empty-state>
+
+    <ul class="tsn-command-palette__results" *ngIf="flatCommands().length > 0">
+      <ng-container *ngFor="let bucket of groupedCommands()">
+        <li class="tsn-command-palette__group-label">{{ bucket.group }}</li>
+        <li
+          *ngFor="let command of bucket.items"
+          class="tsn-command-palette__result"
+          [class.tsn-command-palette__result--active]="isActive(command)"
+          (click)="onCommandClick(command)"
+        >
+          <span class="tsn-command-palette__result-label">{{ command.label }}</span>
+          <span class="tsn-command-palette__shortcut" *ngIf="command.shortcut">{{
+            command.shortcut
+          }}</span>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</tsn-modal>

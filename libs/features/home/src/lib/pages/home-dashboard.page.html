@@ -1,0 +1,13 @@
+<section class="home-dashboard">
+  <header class="home-dashboard__banner">
+    <h1>Welcome back, {{ displayName() }}</h1>
+  </header>
+
+  <ul class="home-dashboard__grid">
+    <li class="home-dashboard__card" *ngFor="let link of quickLinks">
+      <a class="home-dashboard__card-link" [routerLink]="link.route">
+        <tsn-badge tone="info">{{ link.label }}</tsn-badge>
+      </a>
+    </li>
+  </ul>
+</section>

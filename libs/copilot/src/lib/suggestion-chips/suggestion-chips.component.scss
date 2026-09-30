@@ -1,0 +1,29 @@
+.tsn-suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tsn-space-2);
+
+  &__chip {
+    appearance: none;
+    border: 1px solid var(--tsn-color-border);
+    background: var(--tsn-color-surface);
+    color: var(--tsn-color-text-primary);
+    font-size: var(--tsn-font-size-xs);
+    font-weight: var(--tsn-font-weight-medium);
+    padding: var(--tsn-space-1) var(--tsn-space-3);
+    border-radius: var(--tsn-radius-full);
+    cursor: pointer;
+    transition: background-color var(--tsn-motion-duration-fast) var(--tsn-motion-easing-standard),
+      border-color var(--tsn-motion-duration-fast) var(--tsn-motion-easing-standard);
+
+    &:hover {
+      background: var(--tsn-color-surface-sunken);
+      border-color: var(--tsn-color-border-strong);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tsn-color-focus-ring);
+      outline-offset: 2px;
+    }
+  }
+}

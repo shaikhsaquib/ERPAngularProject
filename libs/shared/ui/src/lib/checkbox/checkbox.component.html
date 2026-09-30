@@ -1,0 +1,12 @@
+<span class="tsn-checkbox">
+  <input
+    #inputEl
+    type="checkbox"
+    [id]="checkboxId"
+    class="tsn-checkbox__input"
+    [checked]="checked"
+    [disabled]="disabled"
+    (change)="handleChange(inputEl.checked)"
+  />
+  <label class="tsn-checkbox__label" [for]="checkboxId">{{ label }}</label>
+</span>

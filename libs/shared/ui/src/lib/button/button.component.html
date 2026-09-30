@@ -1,0 +1,17 @@
+<button
+  class="tsn-button"
+  [class.tsn-button--primary]="variant === 'primary'"
+  [class.tsn-button--secondary]="variant === 'secondary'"
+  [class.tsn-button--tertiary]="variant === 'tertiary'"
+  [class.tsn-button--danger]="variant === 'danger'"
+  [class.tsn-button--sm]="size === 'sm'"
+  [class.tsn-button--md]="size === 'md'"
+  [class.tsn-button--lg]="size === 'lg'"
+  [class.tsn-button--loading]="loading"
+  [attr.type]="type"
+  [disabled]="isDisabled"
+  [attr.aria-busy]="loading ? 'true' : null"
+>
+  <span class="tsn-button__spinner" *ngIf="loading" aria-hidden="true"></span>
+  <span class="tsn-button__label"><ng-content></ng-content></span>
+</button>

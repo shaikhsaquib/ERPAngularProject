@@ -1,0 +1,42 @@
+:host {
+  display: inline-block;
+}
+
+.tsn-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tsn-space-1);
+  padding: 0 var(--tsn-space-2);
+  height: 1.25rem;
+  border-radius: var(--tsn-radius-full);
+  font-family: var(--tsn-font-family-base);
+  font-size: var(--tsn-font-size-xs);
+  font-weight: var(--tsn-font-weight-medium);
+  line-height: var(--tsn-line-height-tight);
+  white-space: nowrap;
+
+  &--neutral {
+    background-color: var(--tsn-color-surface-sunken);
+    color: var(--tsn-color-text-secondary);
+  }
+
+  &--info {
+    background-color: var(--tsn-color-info-surface);
+    color: var(--tsn-color-info);
+  }
+
+  &--success {
+    background-color: var(--tsn-color-success-surface);
+    color: var(--tsn-color-success);
+  }
+
+  &--warning {
+    background-color: var(--tsn-color-warning-surface);
+    color: var(--tsn-color-warning);
+  }
+
+  &--danger {
+    background-color: var(--tsn-color-danger-surface);
+    color: var(--tsn-color-danger);
+  }
+}

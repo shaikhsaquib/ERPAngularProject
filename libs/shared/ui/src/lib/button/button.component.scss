@@ -1,0 +1,164 @@
+:host {
+  display: inline-block;
+}
+
+.tsn-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tsn-space-2);
+  font-family: var(--tsn-font-family-base);
+  font-weight: var(--tsn-font-weight-medium);
+  line-height: var(--tsn-line-height-tight);
+  border-radius: var(--tsn-radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--tsn-motion-duration-fast) var(--tsn-motion-easing-standard),
+    border-color var(--tsn-motion-duration-fast) var(--tsn-motion-easing-standard),
+    color var(--tsn-motion-duration-fast) var(--tsn-motion-easing-standard);
+
+  &:focus-visible {
+    outline: 2px solid var(--tsn-color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  // ---- Sizes -------------------------------------------------------------
+  &--sm {
+    height: 1.75rem;
+    padding: 0 var(--tsn-space-3);
+    font-size: var(--tsn-font-size-xs);
+  }
+
+  &--md {
+    height: 2.25rem;
+    padding: 0 var(--tsn-space-4);
+    font-size: var(--tsn-font-size-base);
+  }
+
+  &--lg {
+    height: 2.75rem;
+    padding: 0 var(--tsn-space-5);
+    font-size: var(--tsn-font-size-md);
+  }
+
+  // ---- Variants ------------------------------------------------------------
+  &--primary {
+    background-color: var(--tsn-color-primary);
+    color: var(--tsn-color-on-primary);
+    border-color: var(--tsn-color-primary);
+
+    &:hover:not(:disabled) {
+      background-color: var(--tsn-color-primary-hover);
+      border-color: var(--tsn-color-primary-hover);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--tsn-color-primary-active);
+      border-color: var(--tsn-color-primary-active);
+    }
+
+    &:disabled {
+      background-color: var(--tsn-color-surface-sunken);
+      border-color: var(--tsn-color-surface-sunken);
+      color: var(--tsn-color-text-disabled);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--tsn-color-surface);
+    color: var(--tsn-color-primary);
+    border-color: var(--tsn-color-border-strong);
+
+    &:hover:not(:disabled) {
+      background-color: var(--tsn-color-surface-sunken);
+      border-color: var(--tsn-color-primary);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--tsn-color-surface-sunken);
+      border-color: var(--tsn-color-primary-active);
+      color: var(--tsn-color-primary-active);
+    }
+
+    &:disabled {
+      color: var(--tsn-color-text-disabled);
+      border-color: var(--tsn-color-border);
+    }
+  }
+
+  &--tertiary {
+    background-color: transparent;
+    color: var(--tsn-color-primary);
+    border-color: transparent;
+
+    &:hover:not(:disabled) {
+      background-color: var(--tsn-color-surface-sunken);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--tsn-color-surface-sunken);
+      color: var(--tsn-color-primary-active);
+    }
+
+    &:disabled {
+      color: var(--tsn-color-text-disabled);
+    }
+  }
+
+  &--danger {
+    background-color: var(--tsn-color-danger);
+    color: var(--tsn-color-text-inverse);
+    border-color: var(--tsn-color-danger);
+
+    &:hover:not(:disabled) {
+      background-color: var(--tsn-color-danger);
+      filter: brightness(0.9);
+    }
+
+    &:active:not(:disabled) {
+      filter: brightness(0.8);
+    }
+
+    &:disabled {
+      background-color: var(--tsn-color-surface-sunken);
+      border-color: var(--tsn-color-surface-sunken);
+      color: var(--tsn-color-text-disabled);
+    }
+  }
+
+  &--loading {
+    cursor: progress;
+  }
+}
+
+.tsn-button__spinner {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: var(--tsn-radius-full);
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  opacity: 0.85;
+  animation: tsn-button-spin var(--tsn-motion-duration-slow) linear infinite;
+  animation-duration: 700ms;
+}
+
+.tsn-button__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tsn-space-1);
+}
+
+@keyframes tsn-button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

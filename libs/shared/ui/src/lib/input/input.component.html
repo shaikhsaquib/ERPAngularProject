@@ -1,0 +1,26 @@
+<div class="tsn-input-field">
+  <label class="tsn-input-field__label" [for]="inputId">
+    {{ label }}
+    <span *ngIf="required" class="tsn-input-field__required" aria-hidden="true">*</span>
+  </label>
+
+  <input
+    #inputEl
+    [id]="inputId"
+    class="tsn-input-field__control"
+    [class.tsn-input-field__control--error]="!!errorMessage"
+    [type]="type"
+    [placeholder]="placeholder"
+    [required]="required"
+    [disabled]="disabled"
+    [value]="value"
+    [attr.aria-invalid]="errorMessage ? 'true' : null"
+    [attr.aria-describedby]="describedBy"
+    (input)="handleInput(inputEl.value)"
+    (blur)="handleBlur()"
+  />
+
+  <p *ngIf="errorMessage" class="tsn-input-field__error" [id]="errorId" role="alert">
+    {{ errorMessage }}
+  </p>
+</div>

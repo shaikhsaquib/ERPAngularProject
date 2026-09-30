@@ -1,0 +1,43 @@
+<nav class="tsn-module-bar" aria-label="Business modules">
+  <ul class="tsn-module-bar__modules">
+    <li *ngFor="let module of modules">
+      <button
+        type="button"
+        class="tsn-module-bar__module"
+        [class.tsn-module-bar__module--active]="module.id === activeModuleId"
+        [attr.aria-current]="module.id === activeModuleId ? 'page' : null"
+        (click)="onModuleClick(module.id)"
+      >
+        {{ module.label }}
+      </button>
+    </li>
+  </ul>
+
+  <div class="tsn-module-bar__actions">
+    <button
+      type="button"
+      class="tsn-module-bar__action"
+      aria-label="Notifications"
+      (click)="onNotificationsClick()"
+    >
+      <tsn-icon name="bell" size="sm"></tsn-icon>
+      <tsn-badge
+        *ngIf="notificationsStore.unreadCount() > 0"
+        tone="danger"
+        class="tsn-module-bar__badge"
+      >
+        {{ notificationsStore.unreadCount() }}
+      </tsn-badge>
+    </button>
+
+    <button
+      type="button"
+      class="tsn-module-bar__action tsn-module-bar__user"
+      aria-label="User menu"
+      (click)="onUserMenuClick()"
+    >
+      <tsn-icon name="user" size="sm"></tsn-icon>
+      <span class="tsn-module-bar__user-name">{{ sessionStore.displayName() }}</span>
+    </button>
+  </div>
+</nav>

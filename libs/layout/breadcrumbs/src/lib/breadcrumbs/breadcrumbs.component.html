@@ -1,0 +1,20 @@
+<nav class="tsn-breadcrumbs" aria-label="Breadcrumb">
+  <ol class="tsn-breadcrumbs__list">
+    <li class="tsn-breadcrumbs__item" *ngFor="let crumb of crumbs; let last = last">
+      <a
+        *ngIf="crumb.route; else currentCrumb"
+        href="javascript:void(0)"
+        class="tsn-breadcrumbs__link"
+        (click)="onCrumbClick(crumb)"
+      >
+        {{ crumb.label }}
+      </a>
+      <ng-template #currentCrumb>
+        <span class="tsn-breadcrumbs__current" [attr.aria-current]="last ? 'page' : null">
+          {{ crumb.label }}
+        </span>
+      </ng-template>
+      <span class="tsn-breadcrumbs__separator" *ngIf="!last" aria-hidden="true">/</span>
+    </li>
+  </ol>
+</nav>

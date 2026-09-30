@@ -1,0 +1,30 @@
+<ng-container *hasPermission="'company-specific.policy.view'; else restricted">
+  <tsn-data-table
+    [columns]="columns"
+    [rows]="rows()"
+    [totalCount]="totalCount()"
+    [page]="page()"
+    [pageSize]="pageSize()"
+    [sort]="sort()"
+    [loading]="loading()"
+    trackByField="id"
+    (pageChange)="onPageChange($event)"
+    (sortChange)="onSortChange($event)"
+    (rowClick)="onRowClick($event)"
+  ></tsn-data-table>
+
+  @if (selectedPolicy(); as policy) {
+  <div class="selected-policy">
+    <span class="selected-policy__label">{{ policy.title }} status:</span>
+    <tsn-workflow-status-badge [state]="policy.status" />
+  </div>
+  }
+</ng-container>
+
+<ng-template #restricted>
+  <tsn-empty-state
+    icon="warning"
+    title="Access restricted"
+    description="You don't have permission to view policy documents."
+  />
+</ng-template>

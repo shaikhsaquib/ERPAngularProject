@@ -1,0 +1,36 @@
+.gatepass-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsn-space-4);
+  padding: var(--tsn-space-6);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      margin: 0;
+      font-size: var(--tsn-font-size-xl);
+      font-weight: var(--tsn-font-weight-semibold);
+      color: var(--tsn-color-text-primary);
+    }
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tsn-space-3);
+    padding: var(--tsn-space-4);
+    border: 1px solid var(--tsn-color-border);
+    border-radius: var(--tsn-radius-md);
+    background: var(--tsn-color-surface-raised);
+
+    h2 {
+      margin: 0;
+      font-size: var(--tsn-font-size-md);
+      font-weight: var(--tsn-font-weight-medium);
+      color: var(--tsn-color-text-primary);
+    }
+  }
+}

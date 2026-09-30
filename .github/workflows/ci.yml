@@ -1,0 +1,103 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: 'false'
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: nrwl/nx-set-shas@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint affected projects
+        run: npx nx affected --target=lint --parallel=3
+
+      - name: Test affected projects
+        run: npx nx affected --target=test --parallel=3 --configuration=ci
+
+      - name: Build affected projects
+        run: npx nx affected --target=build --parallel=3
+
+      - name: Bundle budget check (shell, production)
+        run: npx nx run shell:build:production
+
+      - name: SAST placeholder
+        run: |
+          echo "TODO(platform-team): wire the org's chosen SAST tool here (e.g. Semgrep/Snyk/CodeQL)."
+          echo "Kept as an explicit no-op step so the pipeline stage exists and is visible in required checks."
+
+  accessibility:
+    runs-on: ubuntu-latest
+    needs: main
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build shared-ui Storybook
+        run: npx nx run shared-ui:build-storybook
+
+      - name: Axe scan — shared-ui stories
+        run: |
+          npx http-server dist/storybook/shared-ui -p 4400 --silent &
+          npx wait-on tcp:4400
+          npx test-storybook --url http://127.0.0.1:4400 --config-dir libs/shared/ui/.storybook
+
+      - name: Build shared-patterns Storybook
+        run: npx nx run shared-patterns:build-storybook
+
+      - name: Axe scan — shared-patterns stories
+        run: |
+          npx http-server dist/storybook/shared-patterns -p 4401 --silent &
+          npx wait-on tcp:4401
+          npx test-storybook --url http://127.0.0.1:4401 --config-dir libs/shared/patterns/.storybook
+
+  e2e:
+    runs-on: ubuntu-latest
+    needs: main
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run e2e (one Playwright project per feature module)
+        run: npx nx run shell-e2e:e2e

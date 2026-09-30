@@ -1,0 +1,101 @@
+.tsn-copilot-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tsn-space-4);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 22rem;
+  max-width: 100%;
+  padding: var(--tsn-space-4);
+  background: var(--tsn-color-surface-raised);
+  border-left: 1px solid var(--tsn-color-border);
+  box-shadow: var(--tsn-elevation-4);
+  z-index: 30;
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--tsn-space-2);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: var(--tsn-font-size-lg);
+    font-weight: var(--tsn-font-weight-semibold);
+    color: var(--tsn-color-text-primary);
+  }
+
+  &__context {
+    margin: var(--tsn-space-1) 0 0;
+    font-size: var(--tsn-font-size-sm);
+    color: var(--tsn-color-text-secondary);
+  }
+
+  &__close {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--tsn-color-text-secondary);
+    padding: var(--tsn-space-2);
+    border-radius: var(--tsn-radius-sm);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--tsn-color-surface-sunken);
+      color: var(--tsn-color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tsn-color-focus-ring);
+      outline-offset: 2px;
+    }
+  }
+
+  &__messages {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tsn-space-2);
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+
+  &__empty {
+    margin: 0;
+    color: var(--tsn-color-text-secondary);
+    font-size: var(--tsn-font-size-sm);
+  }
+
+  &__message {
+    max-width: 85%;
+    padding: var(--tsn-space-2) var(--tsn-space-3);
+    border-radius: var(--tsn-radius-lg);
+    font-size: var(--tsn-font-size-sm);
+    line-height: var(--tsn-line-height-base);
+
+    &--user {
+      align-self: flex-end;
+      background: var(--tsn-color-primary);
+      color: var(--tsn-color-on-primary);
+    }
+
+    &--assistant {
+      align-self: flex-start;
+      background: var(--tsn-color-surface-sunken);
+      color: var(--tsn-color-text-primary);
+    }
+  }
+
+  &__composer {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--tsn-space-2);
+  }
+
+  &__input {
+    flex: 1;
+  }
+}

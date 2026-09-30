@@ -1,0 +1,17 @@
+<div class="tsn-mega-menu" *ngIf="open" role="menu">
+  <div class="tsn-mega-menu__section" *ngFor="let section of sections">
+    <h3 class="tsn-mega-menu__section-title">{{ section.title }}</h3>
+    <ul class="tsn-mega-menu__links">
+      <li *ngFor="let link of section.links">
+        <button
+          type="button"
+          class="tsn-mega-menu__link"
+          role="menuitem"
+          (click)="onLinkClick(link.route)"
+        >
+          {{ link.label }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

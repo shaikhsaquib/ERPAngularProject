@@ -1,0 +1,25 @@
+# CODEOWNERS — placeholders only. Replace each @timescapenu/<team> with real
+# GitHub usernames or teams before enabling required reviews.
+#
+# Rules are evaluated top-to-bottom with LAST match winning, so the
+# catch-all sits first and the more specific lib paths sit after it.
+
+* @timescapenu/platform-team
+
+# Platform-owned: shell bootstrap, core services, shared building blocks
+/apps/shell/          @timescapenu/platform-team
+/libs/core/            @timescapenu/platform-team
+/libs/shared/          @timescapenu/platform-team
+/libs/layout/          @timescapenu/platform-team
+/libs/copilot/         @timescapenu/platform-team
+/libs/testing/         @timescapenu/platform-team
+
+# Feature module teams — one line per business module
+/libs/features/home/                     @timescapenu/team-home
+/libs/features/application-services/     @timescapenu/team-application-services
+/libs/features/compliance/               @timescapenu/team-compliance
+/libs/features/hr-essentials/            @timescapenu/team-hr-essentials
+/libs/features/ess-mss/                  @timescapenu/team-ess-mss
+/libs/features/corporate-lounge/         @timescapenu/team-corporate-lounge
+/libs/features/company-specific/         @timescapenu/team-company-specific
+/libs/features/my-sap/                   @timescapenu/team-my-sap

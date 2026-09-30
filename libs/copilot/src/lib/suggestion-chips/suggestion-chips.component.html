@@ -1,0 +1,11 @@
+<div class="tsn-suggestion-chips" *ngIf="chips.length > 0" role="list" aria-label="Suggestions">
+  <button
+    type="button"
+    class="tsn-suggestion-chips__chip"
+    role="listitem"
+    *ngFor="let chip of chips"
+    (click)="onChipClick(chip)"
+  >
+    {{ chip }}
+  </button>
+</div>
