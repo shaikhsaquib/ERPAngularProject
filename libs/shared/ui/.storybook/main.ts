@@ -7,6 +7,12 @@ const config: StorybookConfig = {
     name: '@storybook/angular',
     options: {},
   },
+  // Avoids the first-run telemetry consent prompt hanging on stdin in
+  // non-interactive shells/CI (STORYBOOK_DISABLE_TELEMETRY covers the same
+  // thing for anyone running the CLI directly instead of through Nx).
+  core: {
+    disableTelemetry: true,
+  },
 };
 
 export default config;

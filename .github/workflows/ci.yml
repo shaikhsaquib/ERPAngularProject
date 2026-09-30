@@ -11,6 +11,7 @@ concurrency:
 
 env:
   NX_CLOUD_DISTRIBUTED_EXECUTION: 'false'
+  STORYBOOK_DISABLE_TELEMETRY: '1'
 
 jobs:
   main:
