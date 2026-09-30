@@ -1,32 +1,32 @@
-// Design tokens — single source of truth for colour, typography, spacing,
-// elevation and motion. Every value here is WCAG AA checked against the
-// surface it is intended to sit on (>= 4.5:1 for normal text, >= 3:1 for
-// large text / UI components). Nothing outside this file should hardcode
-// a colour, spacing, or timing value — components consume these custom
-// properties, never literals.
+/* Design tokens — single source of truth for colour, typography, spacing, */
+/* elevation and motion. Every value here is WCAG AA checked against the */
+/* surface it is intended to sit on (>= 4.5:1 for normal text, >= 3:1 for */
+/* large text / UI components). Nothing outside this file should hardcode */
+/* a colour, spacing, or timing value — components consume these custom */
+/* properties, never literals. */
 
 :root {
-  // ---- Colour ---------------------------------------------------------
-  // Brand / action
-  --tsn-color-primary: #1854d6; // vs #ffffff: 5.3:1
-  --tsn-color-primary-hover: #123f9e; // vs #ffffff: 8.1:1
+  /* ---- Colour --------------------------------------------------------- */
+  /* Brand / action */
+  --tsn-color-primary: #1854d6; /* vs #ffffff: 5.3:1 */
+  --tsn-color-primary-hover: #123f9e; /* vs #ffffff: 8.1:1 */
   --tsn-color-primary-active: #0e3380;
   --tsn-color-on-primary: #ffffff;
 
-  // Semantic status
-  --tsn-color-success: #1e7f43; // vs #ffffff: 4.6:1
+  /* Semantic status */
+  --tsn-color-success: #1e7f43; /* vs #ffffff: 4.6:1 */
   --tsn-color-success-surface: #e6f4ea;
-  --tsn-color-warning: #92600a; // vs #ffffff: 4.9:1 (amber darkened for AA text use)
+  --tsn-color-warning: #92600a; /* vs #ffffff: 4.9:1 (amber darkened for AA text use) */
   --tsn-color-warning-surface: #fbf1de;
-  --tsn-color-danger: #b3261e; // vs #ffffff: 5.9:1
+  --tsn-color-danger: #b3261e; /* vs #ffffff: 5.9:1 */
   --tsn-color-danger-surface: #fbeae9;
-  --tsn-color-info: #0b5fa8; // vs #ffffff: 5.1:1
+  --tsn-color-info: #0b5fa8; /* vs #ffffff: 5.1:1 */
   --tsn-color-info-surface: #e8f1fa;
 
-  // Neutrals / text / surfaces
-  --tsn-color-text-primary: #1a1d21; // vs #ffffff: 15.6:1
-  --tsn-color-text-secondary: #4b5259; // vs #ffffff: 7.4:1
-  --tsn-color-text-disabled: #8a9099; // vs #ffffff: 3.1:1 (large text / disabled only)
+  /* Neutrals / text / surfaces */
+  --tsn-color-text-primary: #1a1d21; /* vs #ffffff: 15.6:1 */
+  --tsn-color-text-secondary: #4b5259; /* vs #ffffff: 7.4:1 */
+  --tsn-color-text-disabled: #8a9099; /* vs #ffffff: 3.1:1 (large text / disabled only) */
   --tsn-color-text-inverse: #ffffff;
   --tsn-color-border: #d0d5da;
   --tsn-color-border-strong: #9aa2ab;
@@ -37,17 +37,17 @@
   --tsn-color-surface-inverse: #14161a;
   --tsn-color-focus-ring: #1854d6;
 
-  // ---- Typography -------------------------------------------------------
+  /* ---- Typography ------------------------------------------------------- */
   --tsn-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --tsn-font-family-mono: 'Roboto Mono', 'SFMono-Regular', Consolas, monospace;
 
-  --tsn-font-size-xs: 0.75rem; // 12px
-  --tsn-font-size-sm: 0.8125rem; // 13px
-  --tsn-font-size-base: 0.875rem; // 14px — ERP data-density default
-  --tsn-font-size-md: 1rem; // 16px
-  --tsn-font-size-lg: 1.125rem; // 18px
-  --tsn-font-size-xl: 1.5rem; // 24px
-  --tsn-font-size-2xl: 2rem; // 32px
+  --tsn-font-size-xs: 0.75rem; /* 12px */
+  --tsn-font-size-sm: 0.8125rem; /* 13px */
+  --tsn-font-size-base: 0.875rem; /* 14px — ERP data-density default */
+  --tsn-font-size-md: 1rem; /* 16px */
+  --tsn-font-size-lg: 1.125rem; /* 18px */
+  --tsn-font-size-xl: 1.5rem; /* 24px */
+  --tsn-font-size-2xl: 2rem; /* 32px */
 
   --tsn-line-height-tight: 1.2;
   --tsn-line-height-base: 1.4;
@@ -58,20 +58,20 @@
   --tsn-font-weight-semibold: 600;
   --tsn-font-weight-bold: 700;
 
-  // ---- Spacing (4px base unit) ------------------------------------------
+  /* ---- Spacing (4px base unit) ------------------------------------------ */
   --tsn-space-0: 0;
-  --tsn-space-1: 0.25rem; // 4px
-  --tsn-space-2: 0.5rem; // 8px
-  --tsn-space-3: 0.75rem; // 12px
-  --tsn-space-4: 1rem; // 16px
-  --tsn-space-5: 1.25rem; // 20px
-  --tsn-space-6: 1.5rem; // 24px
-  --tsn-space-8: 2rem; // 32px
-  --tsn-space-10: 2.5rem; // 40px
-  --tsn-space-12: 3rem; // 48px
-  --tsn-space-16: 4rem; // 64px
+  --tsn-space-1: 0.25rem; /* 4px */
+  --tsn-space-2: 0.5rem; /* 8px */
+  --tsn-space-3: 0.75rem; /* 12px */
+  --tsn-space-4: 1rem; /* 16px */
+  --tsn-space-5: 1.25rem; /* 20px */
+  --tsn-space-6: 1.5rem; /* 24px */
+  --tsn-space-8: 2rem; /* 32px */
+  --tsn-space-10: 2.5rem; /* 40px */
+  --tsn-space-12: 3rem; /* 48px */
+  --tsn-space-16: 4rem; /* 64px */
 
-  // ---- Elevation ---------------------------------------------------------
+  /* ---- Elevation --------------------------------------------------------- */
   --tsn-elevation-0: none;
   --tsn-elevation-1: 0 1px 2px rgba(20, 22, 26, 0.08);
   --tsn-elevation-2: 0 2px 4px rgba(20, 22, 26, 0.1);
@@ -83,7 +83,7 @@
   --tsn-radius-lg: 0.75rem;
   --tsn-radius-full: 999px;
 
-  // ---- Motion --------------------------------------------------------
+  /* ---- Motion -------------------------------------------------------- */
   --tsn-motion-duration-fast: 100ms;
   --tsn-motion-duration-base: 180ms;
   --tsn-motion-duration-slow: 280ms;

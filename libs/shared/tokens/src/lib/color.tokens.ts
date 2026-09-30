@@ -1,4 +1,4 @@
-/** Mirrors the custom properties defined in `_tokens.scss`. Keep both in sync. */
+/** Mirrors the custom properties defined in `tokens.css`. Keep both in sync. */
 export const colorTokens = {
   primary: 'var(--tsn-color-primary)',
   primaryHover: 'var(--tsn-color-primary-hover)',

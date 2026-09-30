@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/angular';
-import '../../tokens/src/lib/_tokens.scss';
+import '../../tokens/src/lib/tokens.css';
 
 const preview: Preview = {
   parameters: {

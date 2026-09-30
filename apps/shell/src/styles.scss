@@ -1,7 +1,7 @@
 // Global stylesheet — loads the design tokens exactly once so every
 // component's `var(--tsn-*)` references resolve. Nothing else belongs here;
 // component-level styling stays in each component's own .scss file.
-@use '../../../libs/shared/tokens/src/lib/tokens';
+@use '../../../libs/shared/tokens/src/lib/tokens.css';
 
 * {
   box-sizing: border-box;
